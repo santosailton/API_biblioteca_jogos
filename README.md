@@ -1,2 +1,2 @@
-# flaskProject_jogoteca
- API com FLASK
+# API_biblioteca_jogos
+ Construção de API com Flask e SLQAlchemy
