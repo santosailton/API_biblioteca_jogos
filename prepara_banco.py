@@ -54,9 +54,7 @@ try:
       # inserindo usuarios
       usuario_sql = 'INSERT INTO usuarios (nome, nickname, senha) VALUES (%s, %s, %s)'
       usuarios = [
-            ("Bruno Divino", "BD", generate_password_hash("alohomora").decode('utf-8')),
-            ("Camila Ferreira", "Mila", generate_password_hash("paozinho").decode('utf-8')),
-            ("Guilherme Louro", "Cake", generate_password_hash("python_eh_vida").decode('utf-8'))
+            ("Ailton", "asantos", generate_password_hash("senha1").decode('utf-8')),
       ]
       cursor.executemany(usuario_sql, usuarios)
 

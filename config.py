@@ -1,5 +1,5 @@
 import os
-SECRET_KEY = 'alura' #criar palavra chave para criptografia
+SECRET_KEY = 'minhachave01' #criar palavra chave para criptografia
 
 SQLALCHEMY_DATABASE_URI = \
     '{SGBD}://{usuario}:{senha}@{servidor}/{database}'.format(

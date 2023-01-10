@@ -14,9 +14,10 @@ class FormularioJogo(FlaskForm):
 
 
 class FormularioUsuario(FlaskForm):
+    nome = StringField('Nome', [validators.DataRequired(), validators.Length(min=1, max=50)])
     nickname = StringField('Nickname', [validators.DataRequired(), validators.Length(min=1, max=8)])
     senha = PasswordField('Senha', [validators.DataRequired(), validators.Length(min=1, max=100)])
-    login = SubmitField('Salvar')
+    subMit = SubmitField('Confirmar')
 
 
 capa_padrao = 'capa_padrao.jpg'
