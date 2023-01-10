@@ -36,13 +36,13 @@ aberta ou abertura de nova sessão.
 
 #### Redireciona para formulário de criação de usuário:
 
-```http
+```
   GET /novo_usuario
 ```
 
 
 #### Redireciona para formulário de login:
 
-```http
+```
   GET /login
 ```
