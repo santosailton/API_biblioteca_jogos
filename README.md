@@ -2,7 +2,7 @@
 # Exemplo de API com Flask
 
 O projeto visa apresentar a aplicação da biblioteca Flask integrando com Front-End, 
-aplicando métodos de segurança contra atques CSRF e proteção de senha com cripografia hash.
+aplicando métodos de segurança contra ataques CSRF(Cross-Site Request Forgery) e proteção de senha com cripografia hash.
 
 Desenvolvido como sugestão de prática durante treinamento.
 ## Stack utilizada
