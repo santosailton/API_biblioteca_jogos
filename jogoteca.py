@@ -4,11 +4,11 @@ from flask_wtf.csrf import CSRFProtect
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
-#carregamento de config do projeto
+# carregamento de config do projeto
 app.config.from_pyfile('config.py')
-#drive de conexao com banco
+# drive de conexao com banco
 db = SQLAlchemy(app)
-#protecao de falha csrf
+# protecao de falha csrf
 csrf = CSRFProtect(app)
 
 bcrypt = Bcrypt(app)

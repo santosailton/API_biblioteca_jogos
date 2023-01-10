@@ -14,5 +14,10 @@ class Usuarios(db.Model):
     nome = db.Column(db.String(20), nullable=False)
     senha = db.Column(db.String(100), nullable=False)
 
+    def __init__(self, nickname, nome, senha):
+        self.nickname = nickname
+        self.nome = nome
+        self.senha = senha
+
     def __repr__(self):
-        return '<Name %r>' % self.name
+        return '<Name %r>' % self.nome

@@ -4,16 +4,18 @@ from jogoteca import app, db
 from helpers import recupera_imagem, deleta_arquivo, FormularioJogo
 import time
 
+
 @app.route('/')
 def index():
     """
     rota raiz
     :return: lista jogos cadastrados
     """
-    lista = Jogos.query.order_by(Jogos.id) #consulta em banco jogos cadastrados
+    lista = Jogos.query.order_by(Jogos.id)  # consulta em banco jogos cadastrados
     return render_template('lista.html', titulo='Jogos', jogos=lista)
 
-@app.route('/editar/<int:id>') #testar com metodo post
+
+@app.route('/editar/<int:id>')  # testar com metodo post
 def editar(id):
     """
     rota para atualizar formulario caso logado
@@ -23,7 +25,8 @@ def editar(id):
     """
 
     if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect(url_for('login', proxima=url_for('editar', id=id))) # redireciona para proxima rota informada na url_for se logado
+        return redirect(url_for('login', proxima=url_for('editar',
+                                                         id=id)))  # redireciona para proxima rota informada na url_for se logado
 
     jogo = Jogos.query.filter_by(id=id).first()
     form = FormularioJogo()
@@ -35,7 +38,8 @@ def editar(id):
 
     return render_template('editar.html', titulo='Editando Jogo', id=id, capa_jogo=capa_jogo, form=form)
 
-#deletando informações do banco
+
+# deletando informações do banco
 @app.route('/deletar/<int:id>')
 def deletar(id):
     """
@@ -52,7 +56,8 @@ def deletar(id):
 
     return redirect(url_for('index'))
 
-#rota para redirecionar para criar formulario caso logado
+
+# rota para redirecionar para criar formulario caso logado
 @app.route('/novo')
 def novo():
     """
@@ -67,15 +72,15 @@ def novo():
     return render_template('novo.html', titulo='Novo Jogo', form=form)
 
 
-#salvando informações do formulario
-@app.route('/criar', methods=['POST',])
+# salvando informações do formulario
+@app.route('/criar', methods=['POST', ])
 def criar():
     """
     rota para validar e inserir dados no banco de dados efetivando na base caso estiverem corretos
 
     :return: retorna Jogo já existente retornando para pagina principal ou adicionando jogo
     """
-    #validacao se campos estao preenchidos
+    # validacao se campos estao preenchidos
     form = FormularioJogo(request.form)
     if not form.validate_on_submit():
         return redirect(url_for('novo'))
@@ -102,7 +107,8 @@ def criar():
     # url_for para redirecionar para a pagina atraves do rota(endpoint) da pagina
     return redirect(url_for('index'))
 
-@app.route('/atualizar', methods=['POST',]) #atualizando informações do banco
+
+@app.route('/atualizar', methods=['POST', 'PATCH'])  # atualizando informações do banco
 def atualizar():
     """
     rota para validar e editar dados no banco de dados efetivando na base caso estiverem corretos
@@ -113,7 +119,6 @@ def atualizar():
     form = FormularioJogo(request.form)
 
     if form.validate_on_submit():
-
         jogo = Jogos.query.filter_by(id=request.form['id']).first()
         jogo.nome = form.nome.data
         jogo.categoria = form.categoria.data
@@ -131,6 +136,7 @@ def atualizar():
 
     return redirect(url_for('index'))
 
+
 @app.route('/uploads/<nome_arquivo>')
 def imagem(nome_arquivo):
     """
@@ -139,4 +145,4 @@ def imagem(nome_arquivo):
     :param nome_arquivo: capa do arquivo que enviada para template
     :return: carrega imagem do diretorio informado para o template
     """
-    return send_from_directory('uploads', nome_arquivo)#carregamento de foto no diretorio informado
+    return send_from_directory('uploads', nome_arquivo)  # carregamento de foto no diretorio informado
