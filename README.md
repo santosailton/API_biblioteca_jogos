@@ -32,17 +32,76 @@ Desenvolvido como sugestão de prática durante treinamento.
 aberta ou abertura de nova sessão.
 - Adicionado operações com contas DELETAR/CRIAR usuário.
 
-## Documentação da API
+## Rotas da API que redirecionam para páginas ou operações internas de validação
 
-#### Redireciona para formulário de criação de usuário:
+
+#### Página principal listando conteúdo:
+
+```
+  GET /
+```
+
+#### Rota para rendenização do formulário de usuário:
 
 ```
   GET /novo_usuario
 ```
 
+#### Rota para criação de usuário recebidos do formulário:
 
-#### Redireciona para formulário de login:
+```
+  POST /registrar
+```
+
+#### Rota para rendenização do formulário de login:
 
 ```
   GET /login
+```
+
+#### Rota para autenticação de usuário recebidos do formulário:
+
+```
+  POST /autenticar
+```
+
+#### Rota para desacoplar sessão logada:
+
+```
+  GET /logout
+```
+
+#### Rota para rendenização do formulário de edição:
+
+```
+  GET /editar/$id
+```
+
+#### Formulário edição de conteúdo recebidos do formulário:
+
+```
+  GET /atualizar
+```
+
+#### Rota para requisitar remoção do conteudo no banco:
+
+```
+  GET /deletar/$id
+```
+
+#### Rota para rendenização do formulário de criação:
+
+```
+  GET /novo
+```
+#### Rota de criação do conteúdo recebidos do formulário:
+
+```
+  GET /criar
+```
+
+#### Rota para anexar imagem do formulário no diretório proposto do projeto:
+
+```
+  GET /uploads/$nome_arquivo
 ```
